@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "685872824080-ifchlpklb093c7jb73s8jtov2mi4n5h7.apps.googleusercontent.com",
+              "client_id": "685872824080-51f7oe0opg4qej3hnui63vbin5htljl9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.hyeeun"
+                "bundle_id": "com.example.gtkFlutter"
               }
             }
           ]
@@ -67,10 +67,10 @@
               "client_type": 3
             },
             {
-              "client_id": "685872824080-ifchlpklb093c7jb73s8jtov2mi4n5h7.apps.googleusercontent.com",
+              "client_id": "685872824080-51f7oe0opg4qej3hnui63vbin5htljl9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.hyeeun"
+                "bundle_id": "com.example.gtkFlutter"
               }
             }
           ]
@@ -111,10 +111,10 @@
               "client_type": 3
             },
             {
-              "client_id": "685872824080-ifchlpklb093c7jb73s8jtov2mi4n5h7.apps.googleusercontent.com",
+              "client_id": "685872824080-51f7oe0opg4qej3hnui63vbin5htljl9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.hyeeun"
+                "bundle_id": "com.example.gtkFlutter"
               }
             }
           ]
