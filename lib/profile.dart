@@ -30,7 +30,10 @@ class ProfilePage extends StatelessWidget {
             ),
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
-              Navigator.pushNamed(context, '/sign-in');
+              if (FirebaseAuth.instance.currentUser == null) {
+                Navigator.pushNamed(context, '/sign-in');
+              }
+              // Navigator.pushNamed(context, '/sign-in');
               // print('logout button');
             },
           ),
@@ -43,6 +46,7 @@ class ProfilePage extends StatelessWidget {
         Column(
           children: const [
             SizedBox(height: 10.0),
+
             Center(
               child: Text(
                 'Hyeeun Kim',

@@ -18,47 +18,68 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Firebase Meetup'),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.person,
+            semanticLabel: 'person',
+          ),
+          onPressed: () {
+            Navigator.pushNamed(context, '/profile');
+            print('person button');
+          },
+        ),
+        title: const Text('Main'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.add,
+              semanticLabel: 'add',
+            ),
+            onPressed: () {
+              print('add button');
+            },
+          ),
+        ],
       ),
       body: ListView(
         children: <Widget>[
-          Image.asset('assets/codelab.png'),
+          // Image.asset('assets/codelab.png'),
           const SizedBox(height: 8),
-          const IconAndDetail(Icons.calendar_today, 'October 30'),
-          const IconAndDetail(Icons.location_city, 'San Francisco'),
-          Consumer<ApplicationState>(
-            builder: (context, appState, _) => AuthFunc(
-                loggedIn: appState.loggedIn,
-                signOut: () {
-                  FirebaseAuth.instance.signOut();
-                }),
-          ),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          const Header("What we'll be doing"),
-          const Paragraph(
-            'Join us for a day full of Firebase Workshops and Pizza!',
-          ),
+          // const IconAndDetail(Icons.calendar_today, 'October 30'),
+          // const IconAndDetail(Icons.location_city, 'San Francisco'),
+          // Consumer<ApplicationState>(
+          //   builder: (context, appState, _) => AuthFunc(
+          //       loggedIn: appState.loggedIn,
+          //       signOut: () {
+          //         FirebaseAuth.instance.signOut();
+          //       }),
+          // ),
+          // const Divider(
+          //   height: 8,
+          //   thickness: 1,
+          //   indent: 8,
+          //   endIndent: 8,
+          //   color: Colors.grey,
+          // ),
+          // const Header("What we'll be doing"),
+          // const Paragraph(
+          //   'Join us for a day full of Firebase Workshops and Pizza!',
+          // ),
           Consumer<ApplicationState>(
             builder: (context, appState, _) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (appState.attendees >= 2)
-                  Paragraph('${appState.attendees} people going')
-                else if (appState.attendees == 1)
-                  const Paragraph('1 person going')
-                else
-                  const Paragraph('No one going'),
+                // if (appState.attendees >= 2)
+                //   Paragraph('${appState.attendees} people going')
+                // else if (appState.attendees == 1)
+                //   const Paragraph('1 person going')
+                // else
+                //   const Paragraph('No one going'),
                 if (appState.loggedIn) ...[
-                  YesNoSelection(
-                    state: appState.attending,
-                    onSelection: (attending) => appState.attending = attending,
-                  ),
+                  // YesNoSelection(
+                  //   state: appState.attending,
+                  //   onSelection: (attending) => appState.attending = attending,
+                  // ),
                   const Header('Discussion'),
                   GuestBook(
                     addMessage: (message) =>
