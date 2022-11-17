@@ -1,20 +1,15 @@
-import 'dart:async';                                     // new
-
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart'        // new
-    hide EmailAuthProvider, PhoneAuthProvider;           // new
-import 'package:firebase_core/firebase_core.dart';       // new
-import 'package:firebase_ui_auth/firebase_ui_auth.dart'; // new
+import 'package:firebase_auth/firebase_auth.dart'
+    hide EmailAuthProvider, PhoneAuthProvider;
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';                 // new
-import 'firebase_options.dart';                          // new
+import 'package:provider/provider.dart';
+import 'firebase_options.dart';
 import 'src/authentication.dart';
-
 import 'src/widgets.dart';
-
-import 'package:intl/intl.dart';       // new
-
+import 'package:intl/intl.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

@@ -1,11 +1,5 @@
-import 'package:firebase_ui_auth/firebase_ui_auth.dart'; // new
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';                 // new
-
-import 'home.dart';
-import 'main.dart';
-import 'app.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key, required List<FirebaseUIAction> actions});
@@ -41,13 +35,5 @@ class SignInScreen extends StatelessWidget {
         })),
       ],
     );
-    // return Scaffold(
-    //     appBar: AppBar(
-    //     title: const Text('Firebase Meetup'),
-    // ),
-    // body:(
-    //
-    // ),
-    // );
   }
 }
