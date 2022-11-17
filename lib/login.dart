@@ -1,8 +1,9 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key, required List<FirebaseUIAction> actions});
+class LoginPage extends StatelessWidget {
+  // const LoginPage({super.key, required List<FirebaseUIAction> actions});
+  const LoginPage();
 
   @override
   Widget build(BuildContext context) {

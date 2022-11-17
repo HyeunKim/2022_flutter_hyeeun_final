@@ -1,6 +1,8 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
+import 'login.dart';
+import 'profile.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -14,7 +16,8 @@ class App extends StatelessWidget {
           return const HomePage();
         },
         '/sign-in': ((context) {
-          return SignInScreen();
+          // return LoginPage(actions: [],);
+          return LoginPage();
         }),
         '/forgot-password': ((context) {
           final arguments = ModalRoute.of(context)?.settings.arguments
@@ -26,16 +29,8 @@ class App extends StatelessWidget {
           );
         }),
         '/profile': ((context) {
-          return ProfileScreen(
-            providers: [],
-            actions: [
-              SignedOutAction(
-                ((context) {
-                  Navigator.of(context).pushReplacementNamed('/home');
-                }),
-              ),
-            ],
-          );
+          // return ProfilePage(providers: [], actions: [],);
+          return ProfilePage();
         })
       },
       title: 'Firebase Meetup',
