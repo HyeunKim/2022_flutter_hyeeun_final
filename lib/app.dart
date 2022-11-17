@@ -18,35 +18,7 @@ class App extends StatelessWidget {
           return const HomePage();
         },
         '/sign-in': ((context) {
-          return SignInScreen(
-            actions: [
-              ForgotPasswordAction(((context, email) {
-                Navigator.of(context)
-                    .pushNamed('/forgot-password', arguments: {'email': email});
-              })),
-              AuthStateChangeAction(((context, state) {
-                if (state is SignedIn || state is UserCreated) {
-                  var user = (state is SignedIn)
-                      ? state.user
-                      : (state as UserCreated).credential.user;
-                  if (user == null) {
-                    return;
-                  }
-                  if (state is UserCreated) {
-                    user.updateDisplayName(user.email!.split('@')[0]);
-                  }
-                  if (!user.emailVerified) {
-                    user.sendEmailVerification();
-                    const snackBar = SnackBar(
-                        content: Text(
-                            'Please check your email to verify your email address'));
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  }
-                  Navigator.of(context).pushReplacementNamed('/home');
-                }
-              })),
-            ],
-          );
+          return SignInScreen();
         }),
         '/forgot-password': ((context) {
           final arguments = ModalRoute.of(context)?.settings.arguments
@@ -71,17 +43,8 @@ class App extends StatelessWidget {
         })
       },
       title: 'Firebase Meetup',
-      theme: ThemeData(
-        buttonTheme: Theme.of(context).buttonTheme.copyWith(
-          highlightColor: Colors.deepPurple,
-        ),
-        primarySwatch: Colors.deepPurple,
-        textTheme: GoogleFonts.robotoTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const HomePage(),
+
+      // home: const HomePage(),
     );
   }
 }
