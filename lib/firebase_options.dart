@@ -66,7 +66,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '685872824080',
     projectId: 'for-final-project',
     storageBucket: 'for-final-project.appspot.com',
-    androidClientId: '685872824080-hu9nmls9fl89c21gq7m6rqt4efnf2sj5.apps.googleusercontent.com',
+    androidClientId: '685872824080-eus1mto93vqb36dnc98lqonhlcnglod6.apps.googleusercontent.com',
     iosClientId: '685872824080-51f7oe0opg4qej3hnui63vbin5htljl9.apps.googleusercontent.com',
     iosBundleId: 'com.example.gtkFlutter',
   );
@@ -77,7 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '685872824080',
     projectId: 'for-final-project',
     storageBucket: 'for-final-project.appspot.com',
-    androidClientId: '685872824080-hu9nmls9fl89c21gq7m6rqt4efnf2sj5.apps.googleusercontent.com',
+    androidClientId: '685872824080-eus1mto93vqb36dnc98lqonhlcnglod6.apps.googleusercontent.com',
     iosClientId: '685872824080-51f7oe0opg4qej3hnui63vbin5htljl9.apps.googleusercontent.com',
     iosBundleId: 'com.example.gtkFlutter',
   );

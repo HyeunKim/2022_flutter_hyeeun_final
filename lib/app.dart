@@ -1,5 +1,6 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'add.dart';
 import 'home.dart';
 import 'login.dart';
 import 'profile.dart';
@@ -16,7 +17,10 @@ class App extends StatelessWidget {
           return const HomePage();
         },
         '/sign-in': ((context) {
-          // return LoginPage(actions: [],);
+          return LoginPage();
+        }),
+        '/add': ((context) {
+          // return ProfilePage(providers: [], actions: [],);
           return LoginPage();
         }),
         '/forgot-password': ((context) {
@@ -33,7 +37,7 @@ class App extends StatelessWidget {
           return ProfilePage();
         })
       },
-      title: 'Firebase Meetup',
+      // title: 'Firebase Meetup',
 
       // home: const HomePage(),
     );

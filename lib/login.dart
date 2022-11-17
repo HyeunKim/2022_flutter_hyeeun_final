@@ -31,7 +31,8 @@ class LoginPage extends StatelessWidget {
                 await signInWithGoogle();
                 if (FirebaseAuth.instance.currentUser != null) {
                   print(FirebaseAuth.instance.currentUser?.uid);
-                  Navigator.pushNamed(context, '/home');
+                  // Navigator.pushNamed(context, '/');
+                  Navigator.pop(context);
                 }
                 // Navigator.pushNamed(context, '/home');
                 // Navigator.pop(context);
@@ -46,7 +47,8 @@ class LoginPage extends StatelessWidget {
                 await FirebaseAuth.instance.signInAnonymously();
                 if (FirebaseAuth.instance.currentUser != null) {
                   print(FirebaseAuth.instance.currentUser?.uid);
-                  Navigator.pushNamed(context, '/home');
+                  // Navigator.pushNamed(context, '/');
+                  Navigator.pop(context);
                 }
                 // Navigator.pushNamed(context, '/home');
                 // Navigator.pop(context);

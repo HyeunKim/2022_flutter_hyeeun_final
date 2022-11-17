@@ -11,8 +11,8 @@ import 'src/authentication.dart';
 import 'src/widgets.dart';
 import 'package:intl/intl.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class AddPage extends StatelessWidget {
+  const AddPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,6 @@ class HomePage extends StatelessWidget {
               semanticLabel: 'add',
             ),
             onPressed: () {
-              Navigator.pushNamed(context, '/add');
               print('add button');
             },
           ),
