@@ -205,7 +205,7 @@ class ApplicationState extends ChangeNotifier {
         .add(<String, dynamic>{
       'text': message,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
-      'name': FirebaseAuth.instance.currentUser!.displayName,
+      'name': FirebaseAuth.instance.currentUser!.displayName ==null? 'anoy' : FirebaseAuth.instance.currentUser!.displayName,
       'userId': FirebaseAuth.instance.currentUser!.uid,
     });
   }
@@ -408,4 +408,3 @@ class YesNoSelection extends StatelessWidget {
     }
   }
 }
-
