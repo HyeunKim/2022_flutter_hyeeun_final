@@ -21,7 +21,7 @@ class App extends StatelessWidget {
         }),
         '/add': ((context) {
           // return ProfilePage(providers: [], actions: [],);
-          return LoginPage();
+          return AddPage();
         }),
         '/forgot-password': ((context) {
           final arguments = ModalRoute.of(context)?.settings.arguments
