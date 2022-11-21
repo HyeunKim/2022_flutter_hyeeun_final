@@ -7,6 +7,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'firebase_options.dart';
 
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart'
+    hide EmailAuthProvider, PhoneAuthProvider;
+
 class LoginPage extends StatelessWidget {
   // const LoginPage({super.key, required List<FirebaseUIAction> actions});
   const LoginPage();
@@ -61,45 +66,22 @@ class LoginPage extends StatelessWidget {
               child: const Text("Guest"),
             ),
 
+            const SizedBox(height: 12.0),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/email_login');
+              },
+              // icon: const Icon(Icons.login, size: 18),
+              child: const Text("Email"),
+            ),
+
 
           ],
         ),
       ),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return SignInScreen(
-  //     actions: [
-  //       ForgotPasswordAction(((context, email) {
-  //         Navigator.of(context)
-  //             .pushNamed('/forgot-password', arguments: {'email': email});
-  //       })),
-  //       AuthStateChangeAction(((context, state) {
-  //         if (state is SignedIn || state is UserCreated) {
-  //           var user = (state is SignedIn)
-  //               ? state.user
-  //               : (state as UserCreated).credential.user;
-  //           if (user == null) {
-  //             return;
-  //           }
-  //           if (state is UserCreated) {
-  //             user.updateDisplayName(user.email!.split('@')[0]);
-  //           }
-  //           if (!user.emailVerified) {
-  //             user.sendEmailVerification();
-  //             const snackBar = SnackBar(
-  //                 content: Text(
-  //                     'Please check your email to verify your email address'));
-  //             ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  //           }
-  //           Navigator.of(context).pushReplacementNamed('/home');
-  //         }
-  //       })),
-  //     ],
-  //   );
-  // }
 }
 
 Future<UserCredential> signInWithGoogle() async {

@@ -1,6 +1,7 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'add.dart';
+import 'email_loginPage.dart';
 import 'home.dart';
 import 'login.dart';
 import 'profile.dart';
@@ -18,6 +19,9 @@ class App extends StatelessWidget {
         },
         '/sign-in': ((context) {
           return LoginPage();
+        }),
+        '/email_login': ((context) {
+          return EmailLoginPage();
         }),
         '/add': ((context) {
           // return ProfilePage(providers: [], actions: [],);
