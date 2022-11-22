@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () async {
                 await signInWithGoogle();
                 if (FirebaseAuth.instance.currentUser != null) {
-                  print(FirebaseAuth.instance.currentUser?.uid);
+                  // print(FirebaseAuth.instance.currentUser?.uid);
                   // Navigator.pushNamed(context, '/');
                   Navigator.pop(context);
                 }
@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () async {
                 await FirebaseAuth.instance.signInAnonymously();
                 if (FirebaseAuth.instance.currentUser != null) {
-                  print(FirebaseAuth.instance.currentUser?.uid);
+                  // print(FirebaseAuth.instance.currentUser?.uid);
                   // Navigator.pushNamed(context, '/');
                   Navigator.pop(context);
                 }

@@ -5,6 +5,7 @@ import 'email_loginPage.dart';
 import 'home.dart';
 import 'login.dart';
 import 'profile.dart';
+import 'update.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -26,6 +27,10 @@ class App extends StatelessWidget {
         '/add': ((context) {
           // return ProfilePage(providers: [], actions: [],);
           return AddPage();
+        }),
+        '/update': ((context) {
+          // return ProfilePage(providers: [], actions: [],);
+          return UpdatePage();
         }),
         '/forgot-password': ((context) {
           final arguments = ModalRoute.of(context)?.settings.arguments

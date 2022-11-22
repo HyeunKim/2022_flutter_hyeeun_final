@@ -147,7 +147,7 @@ class ApplicationState extends ChangeNotifier {
     });
 
     FirebaseAuth.instance.userChanges().listen((user) {
-      print(user);
+      // print(user);
       if (user != null) {
         _loggedIn = true;
         _guestBookSubscription = FirebaseFirestore.instance
@@ -209,6 +209,58 @@ class ApplicationState extends ChangeNotifier {
       'userId': FirebaseAuth.instance.currentUser!.uid,
     });
   }
+
+  Future<void> updateMessageToGuestBook(String message) {
+    if (!_loggedIn) {
+      throw Exception('Must be logged in ');
+    }
+
+    // var id = message.
+    //     FirebaseFirestore.instance.collection('guestbook').doc(message).id;
+
+    return FirebaseFirestore.instance
+        .collection('guestbook')
+        .doc()
+        .update(<String, dynamic>{
+      'text': message,
+      'timestamp': DateTime.now().millisecondsSinceEpoch,
+      'name': FirebaseAuth.instance.currentUser!.displayName ==null? 'anoy' : FirebaseAuth.instance.currentUser!.displayName,
+      'userId': FirebaseAuth.instance.currentUser!.uid,
+    });
+
+    // var id = FirebaseFirestore.instance.collection('guestbook').doc(message).id;
+    //
+    // // print(id);
+    //
+    // return FirebaseFirestore.instance
+    //     .collection('guestbook')
+    //     .doc(id)
+    //     .update(<String, dynamic>{
+    //   'text': message,
+    //   'timestamp': DateTime.now().millisecondsSinceEpoch,
+    // });
+
+    // CollectionReference guestbook = FirebaseFirestore.instance.collection('guestbook');
+    // return guestbook
+    //     .doc(update)
+    //     .update({
+    //   'text': message,
+    // });
+
+    // return FirebaseFirestore.instance.collection('guestbook').doc(message.id)
+    //     .update({
+    //   'text': message,
+    // });
+    //
+    //   FirebaseFirestore.instance
+    //     .collection('guestbook')
+    //     .update({
+    //   'text': message,
+    //   // 'timestamp': DateTime.now().millisecondsSinceEpoch,
+    //   // 'name': FirebaseAuth.instance.currentUser!.displayName ==null? 'anoy' : FirebaseAuth.instance.currentUser!.displayName,
+    //   // 'userId': FirebaseAuth.instance.currentUser!.uid,
+    // });
+  }
 }
 
 class GuestBookMessage {
@@ -259,16 +311,35 @@ class _GuestBookState extends State<GuestBook> {
                 ),
               ),
               if(message.userId == user_id)
-                IconButton(
-                    onPressed: (){
-                      CollectionReference guestbook = FirebaseFirestore.instance.collection('guestbook');
+                Row(
+                  children: [
+                    IconButton(
+                        onPressed: (){
+                          Navigator.pushNamed(context, '/update');
+                          // CollectionReference guestbook = FirebaseFirestore.instance.collection('guestbook');
+                          //
+                          // guestbook
+                          //     .doc(message.id)
+                          //     .update({
+                          // 'text': message,
+                          // });
+                        },
+                        icon: Icon(Icons.edit)
+                    ),
+                    IconButton(
+                        onPressed: (){
+                          CollectionReference guestbook = FirebaseFirestore.instance.collection('guestbook');
 
-                      guestbook
-                          .doc(message.id)
-                          .delete();
-                    },
-                    icon: Icon(Icons.delete_outline)
+                          guestbook
+                              .doc(message.id)
+                              .delete();
+                        },
+                        icon: Icon(Icons.delete_outline)
+
+                    ),
+                  ],
                 ),
+
             ],
           ),
         const SizedBox(height: 8),
@@ -321,6 +392,72 @@ class _GuestBookState2 extends State<GuestBook2> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       await widget.addMessage(_controller.text);
+                      _controller.clear();
+                    }
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(Icons.send),
+                      SizedBox(width: 4),
+                      Text('SEND'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+
+      ],
+    );
+  }
+}
+
+class GuestBook3 extends StatefulWidget {
+  const GuestBook3({super.key, required this.updateMessage});
+  final FutureOr<void> Function(String message) updateMessage;
+
+  @override
+  _GuestBookState3 createState() => _GuestBookState3();
+}
+
+class _GuestBookState3 extends State<GuestBook3> {
+  final _formKey = GlobalKey<FormState>(debugLabel: '_GuestBookState3');
+  final _controller = TextEditingController();
+
+  final user_id = FirebaseAuth.instance.currentUser?.uid;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Form(
+            key: _formKey,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: _controller,
+                    decoration: const InputDecoration(
+                      hintText: 'Leave a message',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Enter your message to continue';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(width: 8),
+                StyledButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      await widget.updateMessage(_controller.text);
                       _controller.clear();
                     }
                   },
