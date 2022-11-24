@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart'
     hide EmailAuthProvider, PhoneAuthProvider;
 import 'package:firebase_core/firebase_core.dart';
@@ -210,22 +211,21 @@ class ApplicationState extends ChangeNotifier {
     });
   }
 
-  Future<void> updateMessageToGuestBook(String message) {
+  Future<void> updateMessageToGuestBook(String newMessage_id, String newMessage_name, String newMessage_message, DateTime newMessage_time, String newMessage_userId) {
     if (!_loggedIn) {
       throw Exception('Must be logged in ');
     }
 
-    // var id = message.
-    //     FirebaseFirestore.instance.collection('guestbook').doc(message).id;
+    // var id = FirebaseFirestore.instance.collection('guestbook').doc(message).id;
 
     return FirebaseFirestore.instance
         .collection('guestbook')
-        .doc()
+        .doc(newMessage_id)
         .update(<String, dynamic>{
-      'text': message,
+      'text': newMessage_message,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
-      'name': FirebaseAuth.instance.currentUser!.displayName ==null? 'anoy' : FirebaseAuth.instance.currentUser!.displayName,
-      'userId': FirebaseAuth.instance.currentUser!.uid,
+      'name': newMessage_name,
+      'userId': newMessage_userId,
     });
 
     // var id = FirebaseFirestore.instance.collection('guestbook').doc(message).id;
@@ -315,7 +315,15 @@ class _GuestBookState extends State<GuestBook> {
                   children: [
                     IconButton(
                         onPressed: (){
-                          Navigator.pushNamed(context, '/update');
+                          Navigator.pushNamed(context, '/update',
+                          arguments: Argument(
+                              message.id,
+                              message.name,
+                              message.message,
+                              message.timestamp,
+                              message.userId
+                          )
+                          );
                           // CollectionReference guestbook = FirebaseFirestore.instance.collection('guestbook');
                           //
                           // guestbook
@@ -346,6 +354,16 @@ class _GuestBookState extends State<GuestBook> {
       ],
     );
   }
+}
+
+class Argument {
+  String id;
+  String name;
+  String message;
+  DateTime timestamp;
+  String userId;
+
+  Argument(this.id, this.name, this.message, this.timestamp, this.userId);
 }
 
 class GuestBook2 extends StatefulWidget {
@@ -451,6 +469,9 @@ class _GuestBookState3 extends State<GuestBook3> {
                       }
                       return null;
                     },
+                    // onChanged: (value) {
+                    //   if(value.isNotEmpty) _controller.text = value;
+                    // },
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -465,7 +486,7 @@ class _GuestBookState3 extends State<GuestBook3> {
                     children: const [
                       Icon(Icons.send),
                       SizedBox(width: 4),
-                      Text('SEND'),
+                      Text('UPDATE'),
                     ],
                   ),
                 ),

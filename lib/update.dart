@@ -11,8 +11,9 @@ class UpdatePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Return an AsymmetricView (104)
-    // TODO: Pass Category variable to AsymmetricView (104)
+
+    final Argument mess = ModalRoute.of(context)!.settings.arguments as Argument;
+
     return Scaffold(
       appBar: AppBar(
         // leading: IconButton(
@@ -82,8 +83,8 @@ class UpdatePage extends StatelessWidget {
                   //   onSelection: (attending) => appState.attending = attending,
                   // ),
                   GuestBook3(
-                    updateMessage: (newMessage) =>
-                        appState.updateMessageToGuestBook(newMessage),
+                    updateMessage: (message) =>
+                        appState.updateMessageToGuestBook(mess.id, mess.name, message, mess.timestamp, mess.userId),
                   ),
                 ],
               ],
