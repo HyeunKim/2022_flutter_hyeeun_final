@@ -6,6 +6,7 @@ import 'home.dart';
 import 'login.dart';
 import 'profile.dart';
 import 'update.dart';
+import 'CloudStorageDemo.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -31,6 +32,10 @@ class App extends StatelessWidget {
         '/update': ((context) {
           // return ProfilePage(providers: [], actions: [],);
           return UpdatePage();
+        }),
+        '/camera': ((context) {
+          // return ProfilePage(providers: [], actions: [],);
+          return CloudStorageDemo();
         }),
         '/forgot-password': ((context) {
           final arguments = ModalRoute.of(context)?.settings.arguments
