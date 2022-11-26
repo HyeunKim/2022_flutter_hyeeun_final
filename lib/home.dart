@@ -224,8 +224,8 @@ class ApplicationState extends ChangeNotifier {
         .update(<String, dynamic>{
       'text': newMessage_message,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
-      'name': newMessage_name,
-      'userId': newMessage_userId,
+      // 'name': newMessage_name,
+      // 'userId': newMessage_userId,
     });
 
     // var id = FirebaseFirestore.instance.collection('guestbook').doc(message).id;
